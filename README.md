@@ -1,7 +1,7 @@
 # Homework 5: Day Planner
 
 ## Description
-This repository holds the fourth homework assignment for [The Coding Boot Camp](https://techbootcamps.utexas.edu/coding/) through the University of Texas at Austin's Center for Professional Education.
+This repository holds the fifth homework assignment for [The Coding Boot Camp](https://techbootcamps.utexas.edu/coding/) through the University of Texas at Austin's Center for Professional Education.
 
 ## Notes
 
