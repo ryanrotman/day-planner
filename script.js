@@ -34,3 +34,6 @@ for (var i = 0; i < 9; i++) {
     faIcon.addClass("fa fa-check-square-o");
     saveBtn.append(faIcon);
 };
+
+// TODO:
+    // debug why the fontawesome icon is not showing up in the button
