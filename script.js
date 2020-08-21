@@ -1,6 +1,8 @@
 // Global variables for needed elements on the page
 var currentDay = $("#currentDay");
 var hour = 9;
+var apptInput = "";
+var apptTime = "";
 var apptArray = [];
 
 // Set current date and time in calendar header
@@ -11,13 +13,12 @@ console.log(currentDay);
 for (var i = 9; i < 18; i++) {
     // Create calendar timeblocks
     var newDiv = $("<div>");
-    newDiv.addClass("row");
-    newDiv.addClass("plannerRow");
+    newDiv.addClass("row plannerRow");
     $(".container").append(newDiv);
 
     // Create time column
     var newTimeDiv = $("<div>");
-    newTimeDiv.addClass("col-1 time-block hour");
+    newTimeDiv.addClass("col-md-1 time-block hour");
     if (i >= 13) {
         newTimeDiv.text(i - 12 + "pm")
     } else if (i == 12) {
@@ -29,14 +30,15 @@ for (var i = 9; i < 18; i++) {
 
     // Create input field for appointment
     var newApptDiv = $("<input>");
-    newApptDiv.addClass("col-10 description");
+    newApptDiv.addClass("col-md-10 description");
     newApptDiv.attr("id", i);
+    newApptDiv.attr("data-value", "appt" + i)
     newDiv.append(newApptDiv);
 
     // Create save button
     var saveBtn = $("<button>");
     saveBtn.attr("type", "button");
-    saveBtn.addClass("col-1 saveBtn");
+    saveBtn.addClass("col-md-1 saveBtn");
     newDiv.append(saveBtn);
 
     // Add font awesome icon to button
@@ -46,7 +48,14 @@ for (var i = 9; i < 18; i++) {
 };
 
 // Click event for saving input field to local storage
-
+$(".saveBtn").on("click", function () {
+    event.preventDefault;
+    // setting the text for the appointment input
+    apptInput = $(this).parent().children(".description").val();
+    console.log(apptInput);
+    apptTime = $(this).parent().children(".description").attr("id");
+    console.log(apptTime);
+});
 
 // Call compareHour() function
 compareHour();
@@ -56,6 +65,7 @@ function compareHour() {
     for (var i = 9; i < 18; i++) {
         // Variable to set current hour
         var currentHour = moment().format("H");
+        // If statement to set the past, present, and future color stylings
         if (i > currentHour) {
             $("#" + i).addClass("future")
         } else if (i == currentHour) {
@@ -68,15 +78,5 @@ function compareHour() {
 
 
 // TODO:
-    // compare time-block hour to current hour
-        // adjust ids to 9-18
-        // adjust currenthour format to 24 hour hour only
-        // wrap this all in a function
-            // for loop with i=9; i<18
-            // if currenthour < i - addClass past
-            // if currenthour = i - addClass present
-            // if currenthour > i - addClass future
-            // TODO: need to figure out how to select proper ID(s) though
-                // ? using some sort of concatination $("#" + someVariable)
-                    // need to somehow create a new variable w/in the function that = i
+    
         
