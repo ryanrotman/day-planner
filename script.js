@@ -3,7 +3,6 @@ var currentDay = $("#currentDay");
 var hour = 9;
 var apptArray = [];
 var currentHour = moment().format("ha");
-console.log(currentHour);
 
 // Set current date and time in calendar header
 currentDay.text(moment().format("LL"));
@@ -20,6 +19,7 @@ for (var i = 9; i < 18; i++) {
     // Create time column
     var newTimeDiv = $("<div>");
     newTimeDiv.addClass("col-1 time-block hour");
+    newTimeDiv.attr("id", i);
     if (i >= 13) {
         newTimeDiv.text(i - 12 + "pm")
     } else if (i == 12) {
@@ -50,4 +50,4 @@ for (var i = 9; i < 18; i++) {
 
 
 // TODO:
-    // add the hour to the time column
+    // compare time-block hour to current hour
