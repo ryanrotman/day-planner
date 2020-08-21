@@ -51,3 +51,14 @@ for (var i = 9; i < 18; i++) {
 
 // TODO:
     // compare time-block hour to current hour
+        // adjust ids to 9-18
+        // adjust currenthour format to 24 hour hour only
+        // wrap this all in a function
+            // for loop with i=9; i<18
+            // if currenthour < i - addClass past
+            // if currenthour = i - addClass present
+            // if currenthour > i - addClass future
+            // TODO: need to figure out how to select proper ID(s) though
+                // ? using some sort of concatination $("#" + someVariable)
+                    // need to somehow create a new variable w/in the function that = i
+        
