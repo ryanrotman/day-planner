@@ -1,12 +1,16 @@
-// Variable selecting needed elements on the page
+// Global variables for needed elements on the page
 var currentDay = $("#currentDay");
+var hour = 9;
+var apptArray = [];
+var currentHour = moment().format("ha");
+console.log(currentHour);
 
 // Set current date and time in calendar header
 currentDay.text(moment().format("LL"));
 console.log(currentDay);
 
 // Create loop to create all needed rows
-for (var i = 0; i < 9; i++) {
+for (var i = 9; i < 18; i++) {
     // Create calendar timeblocks
     var newDiv = $("<div>");
     newDiv.addClass("row");
@@ -16,6 +20,13 @@ for (var i = 0; i < 9; i++) {
     // Create time column
     var newTimeDiv = $("<div>");
     newTimeDiv.addClass("col-1 time-block hour");
+    if (i >= 13) {
+        newTimeDiv.text(i - 12 + "pm")
+    } else if (i == 12) {
+        newTimeDiv.text(i + "pm")
+    } else {
+        newTimeDiv.text(i + "am")
+    };
     newDiv.append(newTimeDiv);
 
     // Create input field for appointment
@@ -35,5 +46,8 @@ for (var i = 0; i < 9; i++) {
     saveBtn.append(faIcon);
 };
 
+// Click event for saving input field to local storage
+
+
 // TODO:
-    // debug why the fontawesome icon is not showing up in the button
+    // add the hour to the time column
