@@ -31,7 +31,7 @@ for (var i = 0; i < 9; i++) {
 
     // Add font awesome icon to button
     var faIcon = $("<i>");
-    faIcon.addClass("fa fa-check-square-o");
+    faIcon.addClass("far fa-calendar-plus");
     saveBtn.append(faIcon);
 };
 
