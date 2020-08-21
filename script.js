@@ -2,7 +2,6 @@
 var currentDay = $("#currentDay");
 var hour = 9;
 var apptArray = [];
-var currentHour = moment().format("ha");
 
 // Set current date and time in calendar header
 currentDay.text(moment().format("LL"));
@@ -19,7 +18,6 @@ for (var i = 9; i < 18; i++) {
     // Create time column
     var newTimeDiv = $("<div>");
     newTimeDiv.addClass("col-1 time-block hour");
-    newTimeDiv.attr("id", i);
     if (i >= 13) {
         newTimeDiv.text(i - 12 + "pm")
     } else if (i == 12) {
@@ -32,6 +30,7 @@ for (var i = 9; i < 18; i++) {
     // Create input field for appointment
     var newApptDiv = $("<input>");
     newApptDiv.addClass("col-10 description");
+    newApptDiv.attr("id", i);
     newDiv.append(newApptDiv);
 
     // Create save button
@@ -47,6 +46,25 @@ for (var i = 9; i < 18; i++) {
 };
 
 // Click event for saving input field to local storage
+
+
+// Call compareHour() function
+compareHour();
+
+// Function to compare current hour with time-blocks and adjust display color accordingly
+function compareHour() {
+    for (var i = 9; i < 18; i++) {
+        // Variable to set current hour
+        var currentHour = moment().format("H");
+        if (i > currentHour) {
+            $("#" + i).addClass("future")
+        } else if (i == currentHour) {
+            $("#" + i).addClass("present")
+        } else {
+            $("#" + i).addClass("past")
+        };
+    };
+};
 
 
 // TODO:
