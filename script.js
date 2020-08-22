@@ -3,6 +3,7 @@ var currentDay = $("#currentDay");
 var hour = 9;
 var apptInput = "";
 var apptTime = "";
+var scheduledApptArray = [];
 
 // Set current date and time in calendar header
 currentDay.text(moment().format("LL"));
@@ -46,6 +47,12 @@ for (var i = 9; i < 18; i++) {
     saveBtn.append(faIcon);
 };
 
+// Call compareHour() function
+compareHour();
+
+// Call showScheduledAppts() function
+showScheduledAppts();
+
 // Click event for saving input field to local storage
 $(".saveBtn").on("click", function () {
     event.preventDefault;
@@ -72,10 +79,16 @@ $(".saveBtn").on("click", function () {
 });
 
 // Show calendar appointments saved in storage
-
-
-// Call compareHour() function
-compareHour();
+function showScheduledAppts() {
+    scheduledApptArray = JSON.parse(localStorage.getItem("apptDetails"));
+    for (var i = 0; i < scheduledApptArray.length; i++) {
+        var scheduledAppt = scheduledApptArray[i];
+        console.log(scheduledAppt);
+        var input = scheduledAppt.input;
+        var time = scheduledAppt.time;
+        $("#" + time).val(input);
+    };
+};
 
 // Function to compare current hour with time-blocks and adjust display color accordingly
 function compareHour() {
