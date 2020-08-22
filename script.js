@@ -3,7 +3,6 @@ var currentDay = $("#currentDay");
 var hour = 9;
 var apptInput = "";
 var apptTime = "";
-var apptArray = [];
 
 // Set current date and time in calendar header
 currentDay.text(moment().format("LL"));
@@ -43,7 +42,7 @@ for (var i = 9; i < 18; i++) {
 
     // Add font awesome icon to button
     var faIcon = $("<i>");
-    faIcon.addClass("far fa-calendar-plus");
+    faIcon.addClass("far fa-calendar-plus fa-lg");
     saveBtn.append(faIcon);
 };
 
@@ -55,7 +54,25 @@ $(".saveBtn").on("click", function () {
     console.log(apptInput);
     apptTime = $(this).parent().children(".description").attr("id");
     console.log(apptTime);
+    var apptDetails = {
+        "time": apptTime,
+        "input": apptInput,
+    };
+    console.log(apptDetails);
+    // setting the empty array to hold appointment details for storage
+    if(apptInput) {
+        var appointments = JSON.parse(localStorage.getItem("apptDetails"));
+        if (appointments == null) {
+            appointments = [];
+        }
+        appointments.push(apptDetails);
+        console.log(appointments);
+        localStorage.setItem("apptDetails", JSON.stringify(appointments));
+    } return
 });
+
+// Show calendar appointments saved in storage
+
 
 // Call compareHour() function
 compareHour();
