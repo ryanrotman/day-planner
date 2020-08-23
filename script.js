@@ -109,6 +109,10 @@ compareHour();
 // Call showScheduledAppts() function
 showScheduledAppts();
 
-// TODO:
-    
-        
+/* TODO:
+    - add further UI experience to this calendar
+        - allow it to be multiple days so a user can scroll through a work week for example to make it more practical
+        - or add the date as a data value to the calendar appts and add code to delete the appts if it doesn't match the currentDay
+        - or include a button to clear localStorage
+        - or have it clear local storage if the time doesn't fall within the work day hours
+*/
