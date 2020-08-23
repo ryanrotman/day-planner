@@ -47,12 +47,6 @@ for (var i = 9; i < 18; i++) {
     saveBtn.append(faIcon);
 };
 
-// Call compareHour() function
-compareHour();
-
-// Call showScheduledAppts() function
-showScheduledAppts();
-
 // Click event for saving input field to local storage
 $(".saveBtn").on("click", function () {
     event.preventDefault;
@@ -81,12 +75,15 @@ $(".saveBtn").on("click", function () {
 // Show calendar appointments saved in storage
 function showScheduledAppts() {
     scheduledApptArray = JSON.parse(localStorage.getItem("apptDetails"));
-    for (var i = 0; i < scheduledApptArray.length; i++) {
-        var scheduledAppt = scheduledApptArray[i];
-        console.log(scheduledAppt);
-        var input = scheduledAppt.input;
-        var time = scheduledAppt.time;
-        $("#" + time).val(input);
+    console.log(scheduledApptArray);
+    if (scheduledApptArray != null) {
+        for (var i = 0; i < scheduledApptArray.length; i++) {
+            var scheduledAppt = scheduledApptArray[i];
+            console.log(scheduledAppt);
+            var input = scheduledAppt.input;
+            var time = scheduledAppt.time;
+            $("#" + time).val(input);
+        };
     };
 };
 
@@ -106,6 +103,11 @@ function compareHour() {
     };
 };
 
+// Call compareHour() function
+compareHour();
+
+// Call showScheduledAppts() function
+showScheduledAppts();
 
 // TODO:
     
